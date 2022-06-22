@@ -11,7 +11,6 @@ from src.domain.stock import CommonStock, PreferredStock
         ("TEA", Decimal(0), 100, 10, 0),
         ("POP", Decimal("0.08"), 100, 10, Decimal("0.008")),
         ("ALE", Decimal("0.23"), 60, 10, Decimal("0.023")),
-        # ("GIN", StockType.PREFERRED, Decimal("0.08"), 100, Decimal('0.02'), 10, Decimal("434.78")),
         ("JOE", Decimal("0.13"), 250, 10, Decimal("0.013")),
     ],
 )
