@@ -12,6 +12,12 @@ class BaseStock(abc.ABC):
     def calculate_dividend_yield(self, price):
         pass
 
+    def calculate_pe_ratio(self, price):
+        try:
+            return price / self.calculate_dividend_yield(price)
+        except ZeroDivisionError:
+            return 0
+
 
 class CommonStock(BaseStock):
     def __init__(self, symbol, last_dividend, par_value, fixed_dividend=0):
