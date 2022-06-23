@@ -1,5 +1,7 @@
+from decimal import Decimal
 import pytest
 
+from src.domain.stock import Stock
 from src.domain.trade import Trade
 
 
@@ -41,4 +43,15 @@ def trades_in_five_mins():
             price=104,
             direction="BUY",
         ),
+    ]
+
+
+@pytest.fixture()
+def all_stocks_with_volume_weighted_price():
+    return [
+        Stock("TEA", Decimal(0), 100, 0, Decimal("100")),
+        Stock("POP", Decimal("0.08"), 100, 0, Decimal("200")),
+        Stock("ALE", Decimal("0.23"), 60, 0, Decimal("300")),
+        Stock("JOE", Decimal("0.13"), 250, 0, Decimal("400")),
+        Stock("GIN", Decimal("0.08"), 100, 0.02, Decimal("500")),
     ]

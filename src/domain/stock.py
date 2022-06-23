@@ -2,12 +2,6 @@ import abc
 
 
 class BaseStock(abc.ABC):
-    def __init__(self, symbol, last_dividend, par_value, fixed_dividend):
-        self.symbol = symbol
-        self.last_dividend = last_dividend
-        self.par_value = par_value
-        self.fixed_dividend = fixed_dividend
-
     @abc.abstractmethod
     def calculate_dividend_yield(self, price):
         pass
@@ -19,7 +13,21 @@ class BaseStock(abc.ABC):
             return 0
 
 
-class CommonStock(BaseStock):
+class Stock(BaseStock):
+    def __init__(
+        self, symbol, last_dividend, par_value, fixed_dividend, volume_weighted_price=0
+    ):
+        self.symbol = symbol
+        self.last_dividend = last_dividend
+        self.par_value = par_value
+        self.fixed_dividend = fixed_dividend
+        self.volume_weighted_price = volume_weighted_price
+
+    def calculate_dividend_yield(self, price):
+        raise NotImplementedError()
+
+
+class CommonStock(Stock):
     def __init__(self, symbol, last_dividend, par_value, fixed_dividend=0):
         super().__init__(symbol, last_dividend, par_value, fixed_dividend)
 
@@ -27,7 +35,7 @@ class CommonStock(BaseStock):
         return self.last_dividend / price
 
 
-class PreferredStock(BaseStock):
+class PreferredStock(Stock):
     def __init__(self, symbol, last_dividend, par_value, fixed_dividend):
         super().__init__(symbol, last_dividend, par_value, fixed_dividend)
 
