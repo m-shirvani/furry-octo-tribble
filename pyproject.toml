@@ -7,6 +7,7 @@ authors = ["Mani Shirvani <mani.shirvani@sky.uk>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 pytest-cov = "^3.0.0"
+Faker = "^13.14.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
